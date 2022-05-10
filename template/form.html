@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sign In</title>
+	</head>
+
+    <style>
+        .btn{
+            background-color: #ffd375;
+            border-radius: 10px;
+            border:0px;
+            zoom:200%;
+        }
+        #background{
+            display: none;
+            position: fixed;
+	        left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        #win_pop{
+            background:#ffffff;
+            width:30%;
+            z-index: 1;
+            margin: 12% auto;
+            overflow: auto;
+        }
+        .win_top{
+            width: 100%;
+            height: auto;
+            background-color: #289be7;
+            color: #ffffff;
+        }
+        .win-top div{
+            padding: 3px 5px 5px 8px;
+        }
+        span {
+            color: white;
+            padding-top: 12px;
+            cursor: pointer;
+            padding-right: 15px;
+        }
+        .content{
+            font-family: Arial,Helvetica,sans-serif;
+            font-size: 17px;
+            text-align: 1.5;
+            overflow: auto;
+        }
+        .wim-footer{
+            text-align: center;
+            background-color: darkgray;
+        }
+    </style>
+
+    <script>
+        var div = document.getElementById('background');
+        var close = document.getElementById('close-button');
+        function show() {
+            div.style.display = "block";
+        }
+        close.onclick = function close() { //Click the x in the upper right corner of the window to close the popover
+            div.style.display = "none";
+        }
+        window.onclick = function close(e) { //Click on the gray part of the page to close the popover
+            if (e.target == div) {
+                div.style.display = "none";
+            }
+        }
+    </script>
+
+	<body>
+		<button class="btn" onclick="show()">Sign In</button>
+        <div id="background">
+            <div id="win_pop">
+				<div class="win_top">
+                    <span id="close-button">x</span>
+					<div>Please Sign In</div>
+				</div>
+				<div class="content">
+					{% if message %}
+                    <p style="color:red">{{ message }}</p>
+                    {% endif %}
+                    <form action="/signin" method="post">
+                        <legend>Please Sign In:</legend>
+                        <p><input name="username" placeholder="Username" value="{{ username }}"></p>
+                        <p><input name="password" placeholder="Password" type="password"></p>
+                        <p><button type="submit">Sign In</button></p>
+                    </form>
+				</div>
+                <div class="wim-footer">
+                    <p><input name="sign up" placeholder="Sign Up"></p>
+                </div>
+			</div>
+		</div>
+	</body>
+</html>

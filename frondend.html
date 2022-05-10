@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Push the Box</title>
+        <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .game{
+            width:560px;
+            margin:5px auto;
+        }
+        </style>
+    </head>
+<body onkeydown="doKeyDown(event)">
+	<div class="game">
+		<canvas id="canvas" width="560" height="560"></canvas>
+		<div id="msg"></div>
+        <input type="button" value="Login in" onClick="Login()">
+		<input type="button" value="Last Level" onClick="Select_level(-1)">
+		<input type="button" value="Next Level" onClick="Select_level(1)">
+		<input type="button" value="Start This Level All Over Again" onClick="Select_level(0)">
+		<input type="button" value="Game Notes" onClick="ShowHelp()">
+	</div>
+<script>
+    function Select_level(i){
+        if (i = -1){
+            Select_level(num-1)
+        }
+        ifsels (i = 1);{
+            Select_level(num+1);
+        }
+        ifsels (i = 0);{
+            Select_level(num);
+        }
+    }
+    var showhelp = false;
+	function ShowHelp(){
+		showhelp = !showhelp;
+		if (showhelp){
+            msg.innerHTML = "This game is presented in the image of cartoon animal world. \
+            The player moves the animal by using the up, down, left and right buttons on the keyboard. \
+            When the player pushes all the box to the positiosn of all apples, the player will pass the this level.";
+		}else{
+			pass;
+		}
+	}
+
+</script>
+    <div style="text-align:center;clear:both">
+        <p>From: Yongyi Lin(22376411) & Zheyuan Deng()</a></p>
+    </div>
+</body>
+</html>
