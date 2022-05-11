@@ -1,99 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Sign In</title>
-	</head>
-
+<head>
+    <meta charset="UTF-8">
+    <title>Push the Box</title>
     <style>
-        .btn{
-            background-color: #ffd375;
-            border-radius: 10px;
-            border:0px;
-            zoom:200%;
+        body {
+            background-color: burlywood;
         }
-        #background{
-            display: none;
+        .signform {
+            font-family: "Gill Sans", sans-serif;
             position: fixed;
-	        left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-        #win_pop{
-            background:#ffffff;
-            width:30%;
-            z-index: 1;
-            margin: 12% auto;
-            overflow: auto;
-        }
-        .win_top{
-            width: 100%;
-            height: auto;
-            background-color: #289be7;
-            color: #ffffff;
-        }
-        .win-top div{
-            padding: 3px 5px 5px 8px;
-        }
-        span {
-            color: white;
-            padding-top: 12px;
-            cursor: pointer;
-            padding-right: 15px;
-        }
-        .content{
-            font-family: Arial,Helvetica,sans-serif;
-            font-size: 17px;
-            text-align: 1.5;
-            overflow: auto;
-        }
-        .wim-footer{
+            background-color: white;
+            top: 20%;
+            left: 30%;
+            width: 500px;
+            height: 400px;
+            border-radius: 1em;
             text-align: center;
-            background-color: darkgray;
+        }
+        .signclose {
+            cursor: pointer;
+            float: right;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            height: 40px;
+            width: 40px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        .content {
+            position: relative;
+            margin-top: 80px;
+        }
+        .signinput {
+            text-align: center;
+            border-radius: 0.2em;
+            width: 280px;
+            height: 45px;
+            border: none;
+            background-color:#f2f2f2;
+            font-size: 28px;
+        }
+        .signin {
+            position: relative;
+            margin-top: 20px;
+        }
+        #registerform {
+            height: 450px;
+        }
+
+        #registerloading{
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            left: 410px;
+            top: 90px;
         }
     </style>
-
-    <script>
-        var div = document.getElementById('background');
-        var close = document.getElementById('close-button');
-        function show() {
-            div.style.display = "block";
-        }
-        close.onclick = function close() { //Click the x in the upper right corner of the window to close the popover
-            div.style.display = "none";
-        }
-        window.onclick = function close(e) { //Click on the gray part of the page to close the popover
-            if (e.target == div) {
-                div.style.display = "none";
-            }
-        }
-    </script>
-
-	<body>
-		<button class="btn" onclick="show()">Sign In</button>
-        <div id="background">
-            <div id="win_pop">
-				<div class="win_top">
-                    <span id="close-button">x</span>
-					<div>Please Sign In</div>
-				</div>
-				<div class="content">
-					{% if message %}
-                    <p style="color:red">{{ message }}</p>
-                    {% endif %}
-                    <form action="/signin" method="post">
-                        <legend>Please Sign In:</legend>
-                        <p><input name="username" placeholder="Username" value="{{ user_name }}"></p>
-                        <p><input name="password" placeholder="Password" type="password"></p>
-                        <p><button type="submit">Sign In</button></p>
-                    </form>
-				</div>
-                <div class="wim-footer">
-                    <p><input name="sign up" placeholder="Sign Up"></p>
-                </div>
-			</div>
-		</div>
-	</body>
+</head>
+<body>
+<div>
+    <button id="displaysign" onclick="start()">Click to Sign in</button>
+</div>
+<div class="signform" id="signform" style="display:none">
+    <div class="signclose">
+        <span onclick="signclose()">x</span>
+    </div>
+    <div class="content">
+        <form action="/signin" method="post">
+            <p><input name="user" class="signinput" placeholder="Username" value="{{ user_name }}"></p>
+            <p><input name="pwd" class="signinput" placeholder="Password" type="password"></p>
+    </div>
+    <div class="signin">
+        <button>Sign In</button>
+    </div>
+    <br>
+    <div class="change" style="color:#4d4d4d">
+        <p>No account? <a href="#" style="text-decoration:none; color:#43A047">Sign up </a>for one :)</p>
+    </div>
+</div>
+<div class="signform" id="registerform" style="display:none">
+    <img src="car.gif" style="display:none" id="registerloading">
+        <div class="signclose">
+            <span onclick="signclose()">x</span>
+        </div>
+        <div class="content">
+            <form action="/signup" method="post">
+                <p><input name="user" class="signinput" placeholder="Username" onblur="loading()" value="{{ user_name }}"></p>
+                <p><input name="pwd" class="signinput" placeholder="Password" type="password"></p>
+        </div>
+        <div class="signin">
+            <button>Sign Up</button>
+        </div>
+    <br>
+    <div class="change" style="color:#4d4d4d">
+        <p>Existing an account? <a href="#" style="text-decoration:none; color:#43A047">Sign In </a>for it :)</p>
+    </div>
+</div>
+</body>
+<script>
+    $(function (){
+        $('.change').click(function ()
+        {
+            $('.signform').animate({height:'toggle', opacity:'toggle'}, 'slow');
+        });
+    })
+    function start() {
+        document.getElementById('signform').style.display=""
+    }
+    function signclose() {
+        document.getElementById('signform').style.display="none"
+        document.getElementById('registerform').style.display="none"
+    }
+    function loading() {
+        document.getElementById('registerloading').style.display=""
+    }
+</script>
 </html>
