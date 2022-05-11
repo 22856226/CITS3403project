@@ -12,8 +12,8 @@ def signin_form():
 
 @app.route('/signin', methods=['POST'])
 def signin():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.form['user_name']
+    password = request.form['pass_word']
     if username=='admin' and password=='password': #check whether the user is correct
         return render_template('signin_ok.html', username=username)
     return render_template('form.html', message='Incorrect username or password', username=username)
