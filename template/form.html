@@ -49,14 +49,6 @@
         #registerform {
             height: 450px;
         }
-
-        #registerloading{
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            left: 410px;
-            top: 90px;
-        }
     </style>
 </head>
 <body>
@@ -69,26 +61,29 @@
     </div>
     <div class="content">
         <form action="/signin" method="post">
-            <p><input name="user" class="signinput" placeholder="Username" value="{{ user_name }}"></p>
-            <p><input name="pwd" class="signinput" placeholder="Password" type="password"></p>
+            <p><input name="user" class="signinput" placeholder="Username" 
+                type="name" minlength=4 maxlength=12></p>
+            <p><input name="pwd" class="signinput" placeholder="Password" 
+                type="password" minlength=6 maxlength=12></p>
     </div>
     <div class="signin">
         <button>Sign In</button>
     </div>
     <br>
     <div class="change" style="color:#4d4d4d">
-        <p>No account? <a href="#" style="text-decoration:none; color:#43A047">Sign up </a>for one :)</p>
+        <p>No account? <a href=“#” style="text-decoration:none; color:#43A047">Sign up </a>for one :)</p>
     </div>
 </div>
 <div class="signform" id="registerform" style="display:none">
-    <img src="car.gif" style="display:none" id="registerloading">
         <div class="signclose">
             <span onclick="signclose()">x</span>
         </div>
         <div class="content">
             <form action="/signup" method="post">
-                <p><input name="user" class="signinput" placeholder="Username" onblur="loading()" value="{{ user_name }}"></p>
-                <p><input name="pwd" class="signinput" placeholder="Password" type="password"></p>
+                <p><input name="user" class="signinput" placeholder="Username" 
+                    type="name" minlength=4 maxlength=12></p>
+                <p><input name="pwd" class="signinput" placeholder="Password" 
+                    type="password" minlength=6 maxlength=12></p>
         </div>
         <div class="signin">
             <button>Sign Up</button>
@@ -109,12 +104,12 @@
     function start() {
         document.getElementById('signform').style.display=""
     }
+    function signup() {
+        document.getElementById('registerform').style.display=""
+    }
     function signclose() {
         document.getElementById('signform').style.display="none"
         document.getElementById('registerform').style.display="none"
-    }
-    function loading() {
-        document.getElementById('registerloading').style.display=""
     }
 </script>
 </html>
