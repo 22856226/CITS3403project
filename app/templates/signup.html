@@ -1,0 +1,26 @@
+{% extends 'form.html' %}
+{%  block contect %}
+    {% for post in posts %}
+    <div class="content">
+        <form action="signin">
+            {{ hidden_tag() }}
+            <p>
+                {{ username.label }}<br>
+                {{ username(size=32) }}
+            </p>
+            <p>
+                {{ password.label }}<br>
+                {{ password }}
+            </p>
+            <p>
+                {{ password2.label }}<br>
+                {{ password2 }}
+            </p>
+            <p>{{ submit() }}</p>
+        </form>
+    </div>
+    <div class="change" style="color:#4d4d4d">
+        <p>Existing an account? <a href="#" style="text-decoration:none; color:#43A047">Sign In </a>for it :)</p>
+    </div>
+    {% endfor %}
+{% endblock %}
