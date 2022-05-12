@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Push the Box</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+        form{
+            background-color: white;
+            width: 500px;
+            height: 400px;
+            border-radius: 1em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign In</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+</html>
