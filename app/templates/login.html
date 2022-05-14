@@ -2,23 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Push the Box</title>
-    <style>
-        body {
-            background-color: burlywood;
-        }
-        form{
-            background-color: white;
-            width: 500px;
-            height: 400px;
-            border-radius: 1em;
-            text-align: center;
-        }
-    </style>
+    <link href="./style.css" rel="stylesheet" type="text/css"/>
+    <title>Login</title>
 </head>
 <body>
-    <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
+    <form action="login" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
@@ -26,10 +14,14 @@
         </p>
         <p>
             {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
+            {{ form.password }}
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{ form.submit() }}</p>
     </form>
+    <br>
+    <div class="change" style="color:#4d4d4d">
+        <p>No account? <a href='register.html' style="text-decoration:none; color:#43A047">Register </a>one :)</p>
+    </div>
 </body>
 </html>
