@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="./style.css" rel="stylesheet" type="text/css">
-    <title>Login</title>
-</head>
-<body>
-    <form action="login" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password }}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
-    <br>
-    <div class="change" style="color:#4d4d4d">
-        <p>No account? <a href='register.html' style="text-decoration:none; color:#43A047">Register </a>one :)</p>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <link href="./style.css" rel="stylesheet" type="text/css">
+        <title>Login</title>
+    </head>
+    <body>
+        <form action="login" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}
+            </p>
+            <p>
+               {{ form.password.label }}<br>
+                {{ form.password }}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p>{{ form.submit() }}</p>
+        </form>
+        <br>
+        <div class="change" style="color:#4d4d4d">
+             <p>No account? <a href='register.html' style="text-decoration:none; color:#43A047">Register </a>one :)</p>
+        </div>
+    </body>
 </html>
