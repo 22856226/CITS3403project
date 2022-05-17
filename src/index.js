@@ -1,4 +1,5 @@
 
+
 var level=0;//the first map
 var box_number=[6,5,4]; //Number of boxes
 var initial_position=[94,39,56];//The initial position of each map
@@ -7,7 +8,7 @@ var position=initial_position[level];
 var vertical =12; // the position value that needs to be changed when up and down
 var movetimes = 0; // the steps moved
 var steps=[]; //Record player actions
-var record=[]; //Record if the box or bear moved, Need to use for back function
+var record=[]; //Record if the box or batman moved, Need to use for back function
 //Create a two-dimensional array, twelve in a row, corresponding to the div created by html
 //0 is an unreachable area, 1 is a target (where to be pushed), 2 is a normal path (walkable), 3 is a wall, and 4 is a chest
 var maps=[
@@ -44,19 +45,19 @@ var maps=[
 $("#easy").click(function(){
     level=0;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
-    position = initial_position[level];// first position of the bear
+    position = initial_position[level];// first position of the batman
     create(); // render the map 
 })
 $("#medium").click(function(){
     level=1;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
-    position = initial_position[level];// first position of the bear
+    position = initial_position[level];// first position of the batman
     create(); // render the map 
 })
 $("#hard").click(function(){
     level=2;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
-    position = initial_position[level];// first position of the bear
+    position = initial_position[level];// first position of the batman
     create(); // render the map 
 })
 
@@ -74,7 +75,7 @@ function create(){ //
             box.eq(index).addClass('type'+maps[level][index]);
         }
     });
-    box.eq(initial_position[level]).addClass("pusher"); //the bear's position
+    box.eq(initial_position[level]).addClass("pusher"); //the batman's position
 }
 
 $(document).keydown(function (e) {
@@ -111,56 +112,63 @@ $(document).keydown(function (e) {
 
 
 function move(step){ 
-    //Judging whether to move, there are three cases, only move the bear, move both the box and the bear , or cannot move anything
-    var bear_position=box.eq(position); //present position
-    var move_position=box.eq(position+step);// next position of bear
+    //Judging whether to move, there are three cases, only move the batman, move both the box and the batman , or cannot move anything
+    var batman_position=box.eq(position); //present position
+    var move_position=box.eq(position+step);// next position of batman
     var box_position=box.eq(position+step*2);// newt position of box
     if(!move_position.hasClass('type4')&&( move_position.hasClass('type1')||move_position.hasClass('type2'))){ 
         //Determine if the box will move by judging the position of the next move
-        bear_position.removeClass("pusher");
-        move_position.addClass("pusher"); //moving the bear
+        batman_position.removeClass("pusher");
+        move_position.addClass("pusher"); //moving the batman
         position=position+step; //change the posinton 
         record.push(0); //The movement is recorded by three numbers: 0, 1, and 2. 
-        movetimes++; //0 means only moving the bear, 1 means moving both, and 2 means moving nothing.
+        movetimes++; //0 means only moving the batman, 1 means moving both, and 2 means moving nothing.
+        times();
     }
     else if((move_position.hasClass('type4'))&&(!box_position.hasClass('type4'))&&(box_position.hasClass('type1')|| box_position.hasClass('type2')) ) {
-        //Because the position of the next step will go to the position of the box, so changing the bear position will also move the box
+        //Because the position of the next step will go to the position of the box, so changing the batman position will also move the box
        move_position.removeClass('type4');
-        bear_position.removeClass("pusher");
+        batman_position.removeClass("pusher");
         box_position.addClass('type4');
         move_position.addClass("pusher").addClass("type2");
         position=position+step;
         record.push(1);
         movetimes++;
+        times();
     }
     else{
         record.push(2);
         movetimes++;
+        times();
     }
 }
 
 function backup(back){
  //The operation is similar to the move function, and the record and steps arraries are used to withdraw to the previous step.   
-    var bear_position = box.eq(position);
+    var batman_position = box.eq(position);
     var back_position = box.eq(position-back);
     var box_position = box.eq(position+back);
     var recording = record.pop();
     if(recording==0){
-        bear_position.removeClass("pusher"); //bear withdraws to the last position
+        batman_position.removeClass("pusher"); //batman withdraws to the last position
         back_position.addClass('pusher');
         movetimes++;
         position -= back;
+        times();
     }
     else if(recording ==1) {
-        bear_position.removeClass("pusher"); // bear and box withdraws to the last position
+        batman_position.removeClass("pusher"); // batman and box withdraws to the last position
         back_position.addClass('pusher').addClass("type2");
-        bear_position.addClass('type4');
+        batman_position.addClass('type4');
         box_position.removeClass('type4').addClass("type2");
         movetimes++;
         position -= back;
+        times();
     }
 }
-
+function times(){
+    $("#movetimes").html("The number of times you moved was "+movetimes);
+}
 function win(){
     if($(".type1.type4").length===target){
         alert("Congratulations, the number of steps you move through this pass is"+ movetimes);
