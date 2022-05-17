@@ -16,12 +16,12 @@ def load_user(user_id):
 def login():
     form = LoginForm()
     if request.method == 'POST':
-        if form.validate_on_submit():
+        if form.validate_on_submit():   #determine whether the form was submitted and validate the form data
             username = request.form.get('username')
             password = request.form.get('password')
             remember_me = request.form.get('remember_me', False)
             player = User.query.first()
-            if username == player.username and player.validate_password(password):
+            if username == player.username and player.validate_password(password):   #compare the submitted data with the data in database
                 login_user(player)
                 flash('Login successfully!')
                 return redirect(url_for('login'))   #return to login page
@@ -39,9 +39,9 @@ def register():
         if form.validate_on_submit():
             username = request.form.get('username')
             password = request.form.get('password')
-            if not username or not password:
+            if not username or not password:   #determines whether the user has entered data
                 flash('Invalid input!')
-            player = User(username=username, password=password)
+            player = User(username=username, password=password)  #Creating a new player
             db.session.add(player)
             db.session.commit()
             flash('New player is created.')
