@@ -12,7 +12,7 @@ def load_user(user_id):
     player = User.query.get(int(user_id))
     return player
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])   #login page
 def login():
     form = LoginForm()
     if request.method == 'POST':
@@ -32,7 +32,7 @@ def login():
             flash('Invalid Input!')
     return render_template('login.html', form=form)
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST']).  #register page
 def register():
     form = RegisterForm()
     if request.method == 'POST':
@@ -49,7 +49,7 @@ def register():
             flash('Invalid Input!')
     return render_template('login.html', form=form)
 
-@app.route('/signout')
+@app.route('/signout')   #sign out page
 def logout():
     logout_user()
     flash('Goodbye.')
