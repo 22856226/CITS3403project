@@ -12,6 +12,10 @@ def load_user(user_id):
     player = User.query.get(int(user_id))
     return player
 
+@app.route('/')  #home page
+def home():
+    return render_template('home.html')
+
 @app.route('/login', methods=['GET', 'POST'])   #login page
 def login():
     form = LoginForm()
