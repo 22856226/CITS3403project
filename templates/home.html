@@ -7,12 +7,12 @@
         <title>home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style.css" rel="push">
     </head>
 
     <body>
         {% if username %}
-        <p>{{username}}，welcome home <a href="{{ url_for('panel') }}">profile</a> <a href="{{ url_for('logout') }}">logout</a>
+        <p>{{username}},welcome home <a href="{{ url_for('panel') }}">profile</a> <a href="{{ url_for('logout') }}">logout</a>
         </p>
         {% else %}
         <p>welcome home <a href="{{ url_for('login') }}">signin</a> <a href="{{ url_for('regist') }}">signup</a></p>
