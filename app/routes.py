@@ -16,6 +16,10 @@ def load_user(user_id):
 def home():
     return render_template('home.html')
 
+@app.route('/intro')  #introduction page
+def intro():
+    return render_template('intro.html')
+
 @app.route('/login', methods=['GET', 'POST'])   #login page
 def login():
     form = LoginForm()
@@ -51,7 +55,7 @@ def register():
             flash('New player is created.')
         else:
             flash('Invalid Input!')
-    return render_template('login.html', form=form)
+    return render_template('register.html', form=form)
 
 @app.route('/signout')   #sign out page
 def logout():
