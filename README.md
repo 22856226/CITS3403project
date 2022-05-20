@@ -5,7 +5,7 @@ As shown in the picture below.
 <p align="center">
     <img
         src= "./img/game.png"
-        width="200"
+        width="400"
         height="200"
         alt="Sokoban Games"
     />
@@ -71,7 +71,7 @@ Level 1 of the Sokoban Games will be used as an example.
 <p align="center">
     <img
         src= "./img/game.png"
-        width="200"
+        width="400"
         height="200"
         alt="Sokoban Games"
     />
