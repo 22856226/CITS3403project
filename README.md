@@ -65,10 +65,10 @@ __Now, you can access the project from the local host.__
 ### Level Maps
 Level 1 of the Sokoban Games will be used as an example.
 **Picture form：**
-![](./img/game.png)
+![](./img/game.png=200x200)
 **The input form in the python code：**
 ```
-0,0,3,3,3,3,3,3,3,3,3,0,
+[0,0,3,3,3,3,3,3,3,3,3,0,
 0,0,3,2,2,3,3,2,2,2,3,0,
 0,0,3,2,2,2,4,2,2,2,3,0,
 0,0,3,4,2,3,3,3,2,4,3,0,
@@ -76,7 +76,7 @@ Level 1 of the Sokoban Games will be used as an example.
 0,3,3,2,3,1,1,1,3,2,3,3,
 0,3,2,4,2,2,4,2,2,4,2,3,
 0,3,2,2,2,2,2,3,2,2,2,3,
-0,3,3,3,3,3,3,3,3,3,3,3
+0,3,3,3,3,3,3,3,3,3,3,3]
 ```
 `0` is an unreachable area, `1` is a target (where to be pushed), `2` is a normal path (walkable), 
 `3` is a wall, and `4` is a chest.
