@@ -73,6 +73,7 @@ Level 1 of the Sokoban Games will be used as an example.
         alt="Sokoban Games"
     />
 </p>
+
 **The input form in the python code：**
 ```
 [0,0,3,3,3,3,3,3,3,3,3,0,
