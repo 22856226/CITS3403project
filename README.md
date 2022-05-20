@@ -18,6 +18,8 @@ As shown in the picture below.
 * [Launch From Local Host](#getting-started)
     * [Gain Project file](#gain-Project-file)
     * [Steps](#steps)
+* [Train of Thought](#train-of-thought)
+    * [Level Maps](#level-maps)
 * [Acceptance testing](#acceptance-testing)
 * * *
 
@@ -26,12 +28,12 @@ As shown in the picture below.
 - HTML5, CSS3 and JavaScript
 - Python
 ### Required Packages
-- unittest
-- flask, flask_wtf, flask_sqlalchemy, flask_login
-- werkzeug.security
-- wtforms, wtforms.validators
-- os
-- sys
+- `unittest`
+- `flask`, `flask_wtf`, `flask_sqlalchemy`, `flask_login`
+- `werkzeug.security`
+- `wtforms`, `wtforms.validators`
+- `os`
+- `sys`
 
 ## Launch From Local Host
 ### Gain Project file
@@ -40,11 +42,11 @@ or
 - Obtain the CITS3403project file package by other ways.
 ### Steps
 1. Find the route to the CITS3403 file and enter it on the local host.
-2. If the terminal environment is __(base)__, run the following command to go to the virtual environment __(venv)__:
+2. If the terminal environment is `(base)`, run the following command to go to the virtual environment `(venv)`:
 ```
 $ source venv/bin/activate
 ```
-Also, you can exit virtual environment using the following command:
+- Also, you can exit virtual environment using the following command:
 ```
 $ deactivate
 ```
@@ -58,6 +60,26 @@ $ export Flask_APP=microblog.py
 $ flask fun
 ```
 __Now, you can access the project from the local host.__
+
+## Train of Thought
+### Level Maps
+Level 1 of the Sokoban Games will be used as an example.
+**Picture form：**
+![](./img/game.png)
+**The input form in the python code：**
+```
+0,0,3,3,3,3,3,3,3,3,3,0,
+0,0,3,2,2,3,3,2,2,2,3,0,
+0,0,3,2,2,2,4,2,2,2,3,0,
+0,0,3,4,2,3,3,3,2,4,3,0,
+0,0,3,2,3,1,1,1,3,2,3,0,
+0,3,3,2,3,1,1,1,3,2,3,3,
+0,3,2,4,2,2,4,2,2,4,2,3,
+0,3,2,2,2,2,2,3,2,2,2,3,
+0,3,3,3,3,3,3,3,3,3,3,3
+```
+`0` is an unreachable area, `1` is a target (where to be pushed), `2` is a normal path (walkable), 
+`3` is a wall, and `4` is a chest.
 
 ## Acceptance testing
 
