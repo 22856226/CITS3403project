@@ -52,19 +52,19 @@ h3{
     background: linear-gradient(to right, red, orange, yellow, green, blue);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    position: absolute;
-    top: 80%;
-    left: 10%;
+    position: fixed;
+    top: 90%;
+    left: 5%;
 }
 #withdraw{
-    position: absolute;
-    top: 80%;
+    position: fixed;
+    bottom: 10%;
     left: 50%;
     background-color: white;
     font-size: 20px;
     border-radius: 8px;
     text-align: center;
-    padding: 12px 24px;
+    padding: 10px 10px;
     box-shadow: 0 9px #999;
 }
 #withdraw:hover {
