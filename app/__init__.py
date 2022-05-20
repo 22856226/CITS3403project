@@ -1,5 +1,5 @@
 from flask import Flask
-from app.store_pwd import db
+from app.database import db
 import os
 import sys
 
