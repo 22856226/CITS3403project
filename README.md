@@ -1,0 +1,63 @@
+<h1 align="center">Sokoban Games</h1>
+It is a project of CITS3403 of The University of Western Australia in 2022 
+and is a web version of a simple [Sobokan Games](). 
+As shown in the picture below.
+<p align="center">
+    <img
+        src="game.png"
+        width="100"
+        height="100"
+        alt="Sokoban Games"
+    />
+</p>
+
+## Directory
+* [Requirements](#requirements)
+    * [Required Languages](#required-packages)
+    * [Required Packages](#required-packages)
+* [Launch From Local Host](#getting-started)
+    * [Gain Project file](#gain-Project-file)
+    * [Steps](#steps)
+* [Acceptance testing](#acceptance-testing)
+* * *
+
+## Requirements
+### Required Languages
+- HTML5, CSS3 and JavaScript
+- Python
+### Required Packages
+- unittest
+- flask, flask_wtf, flask_sqlalchemy, flask_login
+- werkzeug.security
+- wtforms, wtforms.validators
+- os
+- sys
+
+## Launch From Local Host
+### Gain Project file
+- Download from GitHub(https://github.com/22856226/CITS3403project.git) and then get a file named CITS3403project.
+or
+- Obtain the CITS3403project file package by other ways.
+### Steps
+1. Find the route to the CITS3403 file and enter it on the local host.
+2. If the terminal environment is __(base)__, run the following command to go to the virtual environment __(venv)__:
+'''
+$ source venv/bin/activate
+'''
+Also, you can exit virtual environment using the following command:
+'''
+$ deactivate
+'''
+3. Use the following command to install third-party packages required by the project：
+'''
+$ pip install -Ur requirements.txt
+'''
+4. Use the following command and visit 'http://127.0.0.1:5000':
+'''
+$ export Flask_APP=microblog.py
+$ flask fun
+'''
+__Now, you can access the project from the local host.__
+
+## Acceptance testing
+
