@@ -1,5 +1,4 @@
 
-
 var level=0;//the first map
 var box_number=[6,5,4]; //Number of boxes
 var initial_position=[94,39,56];//The initial position of each map
@@ -46,18 +45,31 @@ $("#easy").click(function(){
     level=0;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
+    steps=[];
+    record=[];
+    movetimes=0;
+    times();
     create(); // render the map 
+
 })
 $("#medium").click(function(){
     level=1;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
+    steps=[];
+    record=[];
+    movetimes=0;
+    times();
     create(); // render the map 
 })
 $("#hard").click(function(){
     level=2;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
+    steps=[];
+    record=[];
+    movetimes= 0;
+    times();
     create(); // render the map 
 })
 
