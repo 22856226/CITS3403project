@@ -114,7 +114,7 @@ However, you have to follow the two above rules.
 <p align="center">
     <img
         src= "./img/maps.png"
-        width="200"
+        width="240"
         height="200"
         alt="Level Maps"
     />
@@ -134,7 +134,7 @@ $("#levelx").click(function(){
     create(); // render the map 
 })
 ```
-4. Then, create a new scoring rule for the new level, as detailed in the [Score Scale](#update-and-vet-levels) section.
+4. Then, create a new scoring rule for the new level, as detailed in the [Score Scale](#score-scale) section.
 5. Finally, save the `index.js` and re-execute all commands, and you can see the changes on the Web page.
 
 ## Acceptance testing
