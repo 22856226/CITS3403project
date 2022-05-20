@@ -1,8 +1,7 @@
 
-
 var level=0;//the first map
-var box_number=[6,5,4]; //Number of boxes
-var initial_position=[94,39,56];//The initial position of each map
+var box_number=[4,6,7]; //Number of boxes
+var initial_position=[50,89,56];//The initial position of each map
 var target=box_number[level]; //success condition
 var position=initial_position[level];
 var vertical =12; // the position value that needs to be changed when up and down
@@ -13,51 +12,67 @@ var record=[]; //Record if the box or batman moved, Need to use for back functio
 //0 is an unreachable area, 1 is a target (where to be pushed), 2 is a normal path (walkable), 3 is a wall, and 4 is a chest
 var maps=[
     [
-        0,0,3,3,3,3,3,3,3,3,3,0,
-        0,0,3,2,2,3,3,2,2,2,3,0,
-        0,0,3,2,2,2,4,2,2,2,3,0,
-        0,0,3,4,2,3,3,3,2,4,3,0,
-        0,0,3,2,3,1,1,1,3,2,3,0,
-        0,3,3,2,3,1,1,1,3,2,3,3,
-        0,3,2,4,2,2,4,2,2,4,2,3,
-        0,3,2,2,2,2,2,3,2,2,2,3,
-        0,3,3,3,3,3,3,3,3,3,3,3
-    ],
-    [
-        0,0,0,0,3,3,3,3,3,3,0,0,
-        0,0,0,0,3,2,2,2,2,3,0,0,
-        0,0,3,3,3,4,4,4,2,3,0,0,
-        0,0,3,2,2,4,1,1,2,3,0,0,
-        0,0,3,2,4,1,1,1,3,3,0,0,
-        0,0,3,3,3,3,2,2,3,0,0,0,
-        0,0,0,0,0,3,3,3,3,0,0,0
-    ],
-    [
         0,3,3,3,3,0,0,3,3,3,3,3,
         3,3,2,2,3,0,0,3,2,2,2,3,
         3,2,4,2,3,3,3,3,4,2,2,3,
         3,2,2,4,1,1,1,1,2,4,2,3,
         3,3,2,2,2,2,3,2,2,2,3,3,
         0,3,3,3,3,3,3,3,3,3,3,0
+    ],
+    [
+        0,0,3,3,3,3,3,3,0,0,0,0,
+        0,0,3,2,2,2,2,3,3,3,0,0,
+        0,0,3,2,4,2,2,2,2,3,0,0,
+        3,3,3,2,4,2,3,3,2,3,0,0,
+        3,1,1,1,2,4,2,2,2,3,0,0,
+        3,1,1,1,4,3,4,2,3,3,0,0,
+        3,3,3,3,2,3,2,4,2,3,0,0,
+        0,0,0,3,2,2,2,2,2,3,0,0,
+        0,0,0,3,3,3,3,3,3,3,0,0
+    ],
+    [
+
+        0,3,3,3,3,3,3,3,0,0,0,0,
+        0,3,1,1,1,1,2,3,0,0,0,0,
+        3,3,3,1,1,1,4,3,3,3,0,0,
+        3,2,2,4,3,4,2,4,2,3,0,0,
+        3,2,4,4,2,2,3,4,2,3,0,0,
+        3,2,2,2,2,3,2,2,2,3,0,0,
+        3,3,3,3,2,2,2,3,3,3,0,0,
+        0,0,0,3,3,3,3,3,0,0,0,0
     ]
+    
 ];
 
 $("#easy").click(function(){
     level=0;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
+    steps=[];
+    record=[];
+    movetimes=0;
+    times();
     create(); // render the map 
+
 })
 $("#medium").click(function(){
     level=1;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
+    steps=[];
+    record=[];
+    movetimes=0;
+    times();
     create(); // render the map 
 })
 $("#hard").click(function(){
     level=2;// easy ,medium or hard
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
+    steps=[];
+    record=[];
+    movetimes= 0;
+    times();
     create(); // render the map 
 })
 
@@ -138,7 +153,6 @@ function move(step){
     }
     else{
         record.push(2);
-        movetimes++;
         times();
     }
 }
@@ -170,7 +184,24 @@ function times(){
     $("#movetimes").html("The number of times you moved was "+movetimes);
 }
 function win(){
-    if($(".type1.type4").length===target){
-        alert("Congratulations, the number of steps you move through this pass is"+ movetimes);
+    if($(".type1.type4").length===target){   //Determine whether to clear the game
+        var scores =0;
+        if (level=0){        //According to different levels, and the number of completed steps to give players different points
+            if(movetimes <60){ scores =40;}
+            else if(movetimes>60 && movetimes<80){ scores = 30;}
+            else{scores = 20;}
+        }
+        else if(level =1){
+            if(movetimes <120){ scores = 50;}
+            else if(movetimes>120 && movetimes<150){ scores = 40;}
+            else{scores = 30;}
+        }
+        else if (level=2){
+            if(movetimes <140){ scores = 60;}
+            else if(movetimes>140 && movetimes<170){ scores = 50;}
+            else{scores = 40;}
+        }
+        alert("Congratulations, The number of steps you move through this level is "+ movetimes + ", and your scores is " + scores);
+        movetimes =0; 
     }
 }
