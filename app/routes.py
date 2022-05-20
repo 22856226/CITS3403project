@@ -38,9 +38,9 @@ def login():
                 return redirect(url_for('login'))   #return to login page
         else:
             flash('Invalid Input!')
-    return render_template('login.html', form=form)
+    return render_template('login.html', title='Log in', form=form)
 
-@app.route('/register', methods=['GET', 'POST']).  #register page
+@app.route('/register', methods=['GET', 'POST'])  #register page
 def register():
     form = RegisterForm()
     if request.method == 'POST':
@@ -55,7 +55,7 @@ def register():
             flash('New player is created.')
         else:
             flash('Invalid Input!')
-    return render_template('register.html', form=form)
+    return render_template('register.html', title='Register', form=form)
 
 @app.route('/signout')   #sign out page
 def logout():

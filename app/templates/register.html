@@ -19,8 +19,8 @@
             <p>{{ form.submit() }}</p>
         </form>
         <br>
-        <div class="change" style="color:#4d4d4d">
-            <p>Existing an account? <a href="login.html" style="text-decoration:none; color:#43A047">Login </a>it :)</p>
+        <div style="color:#4d4d4d">
+            <p>Existing an account? <a href="{{ url_for('login') }}" style="text-decoration:none; color:#43A047">Login </a>it :)</p>
         </div>
     </body>
 </html>
