@@ -20,6 +20,7 @@ As shown in the picture below.
     * [Steps](#steps)
 * [Train of Thought](#train-of-thought)
     * [Level Maps](#level-maps)
+        * [Movements](#movements)
 * [Acceptance testing](#acceptance-testing)
 * * *
 
@@ -64,6 +65,7 @@ __Now, you can access the project from the local host.__
 ## Train of Thought
 ### Level Maps
 Level 1 of the Sokoban Games will be used as an example.
+<br/>
 **Picture form：**
 <p align="center">
     <img
@@ -88,6 +90,8 @@ Level 1 of the Sokoban Games will be used as an example.
 ```
 `0` is an unreachable area, `1` is a target (where to be pushed), `2` is a normal path (walkable), 
 `3` is a wall, and `4` is a chest.
+### Movements
+
 
 ## Acceptance testing
 
