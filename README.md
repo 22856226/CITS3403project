@@ -5,8 +5,8 @@ As shown in the picture below.
 <p align="center">
     <img
         src= "./img/game.png"
-        width="100"
-        height="100"
+        width="200"
+        height="200"
         alt="Sokoban Games"
     />
 </p>
