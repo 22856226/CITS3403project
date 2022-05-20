@@ -21,6 +21,7 @@ As shown in the picture below.
 * [Train of Thought](#train-of-thought)
     * [Level Maps](#level-maps)
         * [Movements](#movements)
+* [Update and Vet Levels](#update-and-vet-levels)
 * [Acceptance testing](#acceptance-testing)
 * * *
 
@@ -91,6 +92,8 @@ Level 1 of the Sokoban Games will be used as an example.
 `0` is an unreachable area, `1` is a target (where to be pushed), `2` is a normal path (walkable), 
 `3` is a wall, and `4` is a chest.
 ### Movements
+
+## Update and Vet Levels
 
 
 ## Acceptance testing
