@@ -65,7 +65,14 @@ __Now, you can access the project from the local host.__
 ### Level Maps
 Level 1 of the Sokoban Games will be used as an example.
 **Picture form：**
-![](./img/game.png =100x100)
+<p align="center">
+    <img
+        src= "./img/game.png"
+        width="200"
+        height="200"
+        alt="Sokoban Games"
+    />
+</p>
 **The input form in the python code：**
 ```
 [0,0,3,3,3,3,3,3,3,3,3,0,
