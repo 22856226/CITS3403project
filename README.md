@@ -86,12 +86,30 @@ Level 1 of the Sokoban Games will be used as an example.
 3,3,2,2,2,2,3,2,2,2,3,3,
 0,3,3,3,3,3,3,3,3,3,3,0]
 ```
-`0` is an unreachable area, `1` is a target (where to be pushed), `2` is a normal path (walkable), 
-`3` is a wall, and `4` is a chest.
+As shown above, the rules of the level maps are `0` is an unreachable area, `1` is a target position(where to be pushed), 
+`2` is a normal path (walkable), `3` is a wall, and `4` is a chest.
 ### Movements
 
-## Update and Vet Levels
 
+## Update and Vet Levels
+1. Firstly, go to the `src` file in CITS3403 file and open `index.js`.
+2. Add the new level map that follows the map rules in `maps` variable, which shown below:
+![](./img/maps.png)
+3. Also, add the folloing command to the `index.js` and you only need to change the `x` variable,
+which is the number of level you want to add:
+```
+$("#levelx").click(function(){
+    level=x-1;
+    target = box_number[level]; // the number of boxes
+    position = initial_position[level];// first position of the batman
+    steps=[];
+    record=[];
+    movetimes=0;
+    times();
+    create(); // render the map 
+})
+```
+4. Finally, save the `index.js` and re-execute all commands, and you can see the changes on the Web page.
 
 ## Acceptance testing
 
