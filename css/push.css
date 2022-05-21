@@ -56,31 +56,32 @@ h3{
     top: 90%;
     left: 5%;
 }
-#withdraw{
-    position: fixed;
-    bottom: 10%;
-    left: 50%;
-    background-color: white;
-    font-size: 20px;
-    border-radius: 8px;
+#choice2{
+    position:fixed;
+    left:35%;
+    bottom:10%;
+    list-style-type: none;
     text-align: center;
-    padding: 10px 10px;
+}
+#choice2 li{
+    margin: 15px;
+    display: inline-block;
+    font-size: 18px;
     box-shadow: 0 9px #999;
 }
-#withdraw:hover {
-  background-color: #00FFFF; 
-  color:red;
+#choice2 li:hover {
+    color:rgb(255, 132, 0);
 }
-#withdraw:active{
+#choice2 li:active{
     transform: translateY(4px);
 }
 .choice {
-  position: relative;
-  top: 80px;
-  list-style-type: none;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+    position: relative;
+    top: 80px;
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 .choice li{
     display: inline-block;

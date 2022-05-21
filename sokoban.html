@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/push.css">
 </head>
 <body>
-    <h1> Hello everyone, welcome to the Sokoban games.</h1>
+    <h1> Hello {{ form.username }}, welcome to the Sokoban games.</h1>
     <ul class ="choice">
         <li><button id="easy"class="btn btn-primary btn-lg">level1</button></li>
         <li><button id ="medium" class="btn btn-primary btn-lg"> level2</button></li>
@@ -138,7 +138,13 @@
         <div></div>
         <div></div>                   
     </div>
-    <button id="withdraw" onclick="backup(steps.pop())()">backup</button>
+    <div>
+        <ul id="choice2">
+            <li><button onclick="backup(steps.pop())()">Backup</button></li>
+            <li><button onclick="{{ url_for('signout') }}">Sign Out</button></li>
+            <li><button onclick="{{ url_for('view') }}">View Data</button></li>
+        </ul>
+    </div>
     <h3 id='movetimes'>The number of times you moved was 0</h3>
     <script src="static/jquery-3.1.1.min.js"></script>
     <script src="src/index.js"></script>
