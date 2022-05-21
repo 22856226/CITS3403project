@@ -25,6 +25,7 @@ As shown in the picture below.
 * [Update and Vet Levels](#update-and-vet-levels)
 * [Testings](#testing)
 * [Deploying to Heroku](#deploying-to-heroku)
+    * [Prerequisites](#prerequisites)
 * * *
 
 ## Requirements
@@ -143,3 +144,7 @@ $("#levelx").click(function(){
 
 
 ## Deploying to Heroku
+### Prerequisites
+- Have a free [Heroku account](https://signup.heroku.com/dc).
+- Python version 3.10 installed locally - see the installation guides for [OS X](https://docs.python-guide.org/starting/install3/osx/), [Windows](https://docs.python-guide.org/starting/install3/win/), and [Linux](https://docs.python-guide.org/starting/install3/linux/).
+- [Postgres installed](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup) locally, if running the app locally.
