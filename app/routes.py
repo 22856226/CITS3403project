@@ -63,3 +63,7 @@ def logout():
     logout_user()
     flash('Goodbye.')
     return redirect(url_for('login'))   #return to signin page
+
+@app.route('/sokoban')   #game page
+def sokoban():
+    return redirect(url_for('sokoban'))

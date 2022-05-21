@@ -2,17 +2,17 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link href="{{ url_for('static', filename='push.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
         <title>Home Page</title>
     </head>
     <body>
         <h1>Welcome to Sokoban Games!</h1>
         <br>
-        <p style="text-align: center">Do you want to <a href="{{ url_for('login') }}">Login</a>  
+        <p>Do you want to <a href="{{ url_for('login') }}">Login</a>  
             or <a href="{{ url_for('register') }}">register</a>?
         </p>
         <br>
-        <p style="text-align: center">Or just 
+        <p>Or just 
             <a href="{{ url_for('intro') }}">start playing</a>?
         </p>
 
