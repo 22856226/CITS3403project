@@ -44,8 +44,8 @@ var maps=[
     
 ];
 
-$("#easy").click(function(){
-    level=0;// easy ,medium or hard
+$("#level1").click(function(){
+    level=0;
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
     steps=[];
@@ -55,8 +55,8 @@ $("#easy").click(function(){
     create(); // render the map 
 
 })
-$("#medium").click(function(){
-    level=1;// easy ,medium or hard
+$("#level2").click(function(){
+    level=1;
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
     steps=[];
@@ -65,8 +65,8 @@ $("#medium").click(function(){
     times();
     create(); // render the map 
 })
-$("#hard").click(function(){
-    level=2;// easy ,medium or hard
+$("#level3").click(function(){
+    level=2;
     target = box_number[level]; // the number of boxes
     position = initial_position[level];// first position of the batman
     steps=[];
