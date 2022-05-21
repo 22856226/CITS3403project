@@ -1,6 +1,8 @@
 import unittest
 from app import app, db, User
 
+user = User(name='Grey Li')
+
 class TestCase(unittest.TestCase):
     def setUp(self):
         pass

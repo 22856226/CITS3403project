@@ -1,7 +1,7 @@
 from flask import render_template, request, url_for, redirect, flash
-from app import app
+from app import app, db
 from app.forms import LoginForm, RegisterForm
-from app.database import User, db
+from app.models import User
 from flask_login import LoginManager, login_user, login_required, logout_user
 
 '''When the program runs, if the user is logged in, 
