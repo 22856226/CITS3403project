@@ -6,7 +6,7 @@ h1 {
 }
   
 body {
-  background: url("../img/backgrounds.jpg");
+  background: url("{{ url_for('static', filename='backgrounds.jpg' )}}");
   background-size: cover;
   height: 100%;
 }

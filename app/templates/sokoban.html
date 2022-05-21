@@ -8,7 +8,7 @@
         <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Sokoban Games</title>
-        <link rel="stylesheet" href="css/push.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='push.css')}}">
     </head>
     <body>
         <h1> Hello bro, welcome to the Sokoban games.</h1>
@@ -145,6 +145,7 @@
         <h3 id='movetimes'>The number of times you moved was 0</h3>
         <div class="back">
             <button id="withdraw" onclick="backup(steps.pop())()">Backup</button>
+            <button id="withdraw" onclick="{{ url_for('intro') }}">Game Instructions</button>
             <button id="withdraw" onclick="{{ url_for('view') }}">View Data</button>
             <button id="withdraw" onclick="{{ url_for('signout') }}">Sign Out</button>
         </div>

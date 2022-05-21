@@ -2,18 +2,22 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link href="/./css/push.css" rel="stylesheet">
+        <link href="{{ url_for('static', filename='push.css')}}" rel="stylesheet">
         <title>Home Page</title>
     </head>
     <body>
-        <h1 style="font-style: italic;text-align: center;">Welcome to Sokoban Games!</h1>
+        <h1>Welcome to Sokoban Games!</h1>
         <br>
         <p style="text-align: center">Do you want to <a href="{{ url_for('login') }}">Login</a>  
-            or <a href="{{ url_for('register') }}">register</a> ?
+            or <a href="{{ url_for('register') }}">register</a>?
         </p>
         <br>
         <p style="text-align: center">Or just 
-            <a href="{{ url_for('intro') }}">start playing</a> ?
+            <a href="{{ url_for('intro') }}">start playing</a>?
         </p>
+
+        <footer>
+            <p>By Zheyuan Deng(22856226), Yongyi Lin(22376411) & ().</p>
+        </footer>
     </body>
 </html>

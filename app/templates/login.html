@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link href="/./css/push.css" rel="stylesheet">
+        <link href="{{ url_for('static', filename='push.css')}}" rel="stylesheet">
         <title>Login</title>
     </head>
     <body>
@@ -23,5 +23,9 @@
         <div style="color:#4d4d4d">
             <p>No account? <a href="{{ url_for('register') }}" style="text-decoration:none; color:#43A047">Register </a>one :)</p>
         </div>
+
+        <footer>
+            <p>By Zheyuan Deng(22856226), Yongyi Lin(22376411) & ().</p>
+        </footer>
     </body>
 </html>

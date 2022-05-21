@@ -1,7 +1,10 @@
 import unittest
-from app import app, db, User
+from app import app, db
+from app.models import User
 
-user = User(name='Grey Li')
+user = User(username='Tester', password_hash='123456789')
+db.session.add(user)
+db.session.commit()
 
 class TestCase(unittest.TestCase):
     def setUp(self):
