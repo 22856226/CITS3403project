@@ -4,7 +4,7 @@ and is a web version of a simple [Sobokan Games]().
 As shown in the picture below.
 <p align="center">
     <img
-        src= "./img/game.png"
+        src= "./app/img/game.png"
         width="400"
         height="200"
         alt="Sokoban Games"
@@ -70,7 +70,7 @@ Level 1 of the Sokoban Games will be used as an example.<br/>
 **Picture form：**
 <p align="center">
     <img
-        src= "./img/game.png"
+        src= "./app/img/game.png"
         width="400"
         height="200"
         alt="Sokoban Games"
@@ -94,7 +94,7 @@ To get through the level, player need to push all the chests into all the light 
 At the same time, the number of steps recorded is compared to other players based on the score scale.
 <p align="center">
     <img
-        src= "./img/win.png"
+        src= "./app/img/win.png"
         width="400"
         height="200"
         alt="Level Maps"
@@ -113,7 +113,7 @@ However, you have to follow the two above rules.
 2. Add the new level map that follows the map rules in `maps` variable, which shown below:
 <p align="center">
     <img
-        src= "./img/maps.png"
+        src= "./app/img/maps.png"
         width="240"
         height="200"
         alt="Level Maps"
