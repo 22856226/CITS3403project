@@ -36,22 +36,21 @@ def login():
             flash('Invalid Input!')
     return render_template('login.html', title='Log in', form=form)
 
-@app.route('/register', methods=['GET', 'POST'])  #register page
+@app.route('/register', methods=['POST'])  #register page
 def register():
     form = RegisterForm()
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            username = request.form.get('username')
-            password = request.form.get('password')
-            if not username or not password:   #determines whether the user has entered data
-                flash('Invalid input!')
-            player = User(username=username, password=password)  #Creating a new player
-            db.session.add(player)
-            db.session.commit()
-            flash('New player is created.')
-            return render_template('login.html', title='Log in', form=form)
-        else:
-            flash('Invalid Input!')
+    if form.validate_on_submit():
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if not username or not password:   #determines whether the user has entered data
+            flash('Invalid input!')
+        player = User(username=username, password=password)  #Creating a new player
+        db.session.add(player)
+        db.session.commit()
+        flash('New player is created.')
+        return render_template('login.html', title='Log in', form=form)
+    else:
+        flash('Invalid Input!')
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/signout')   #sign out page
