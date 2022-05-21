@@ -13,6 +13,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)   #initialize the extension and pass in the app instance
 # migrate = Migrate(app, db)
 
+with app.test_request_context():   #keep the database accessible at all times
+    app.preprocess_request()
+
 from app import routes, models
 
 db.create_all()   # Creating a database

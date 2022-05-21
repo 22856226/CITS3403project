@@ -28,7 +28,7 @@ def login():
             if username == player.username and player.validate_password(password):   #compare the submitted data with the data in database
                 login_user(player)
                 flash('Login successfully!')
-                return redirect(url_for('sokoban'))   #return to login page
+                return render_template('sobokan.html', title='Log in', player=player)   #go to game page
             else:
                 flash('Incorrect username or password!')
                 return redirect(url_for('login'))   #return to login page
@@ -56,13 +56,13 @@ def register():
 @app.route('/signout')   #sign out page
 def logout():
     logout_user()
-    flash('Goodbye.')
+    flash('You were logged out. Goodbye!')
     return redirect(url_for('login'))   #return to signin page
 
 @app.route('/sokoban', methods=['GET', 'POST'])   #game page
 def sokoban():
  #   player.scores = player.scores + int(scores)
-    return render_template('sokoban.html')
+    return render_template('sokoban.html', title='Game')
 
 @app.route('/view', methods=['GET', 'POST'])   #view data page
 def view():
