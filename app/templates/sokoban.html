@@ -144,12 +144,36 @@
         </div>
         <h3 id='movetimes'>The number of times you moved was 0</h3>
         <div class="back">
-            <button id="withdraw" onclick="backup(steps.pop())()">Backup</button>
-            <button id="withdraw" onclick="{{ url_for('intro') }}">Game Instructions</button>
-            <button id="withdraw" onclick="{{ url_for('view') }}">View Data</button>
-            <button id="withdraw" onclick="{{ url_for('signout') }}">Sign Out</button>
+            <button class="withdraw" onclick="backup(steps.pop())()">Backup</button>
+            <button class="withdraw" onclick="start()">Game Instructions</button>
+            <div id="intro" style="display:none">
+                <div class="close">
+                    <span onclick="close()">x</span>
+                </div>
+                <div id="content">
+                    <h3>Instruction of Push Box Game</h3>
+                    <p>
+                        This game is a puzzle game of Sokoban. Although the whole game process is simple, 
+                        it requires players to think about how to make full use of the effective space, 
+                        and reasonably push the box to the designated position, so as to win the game.
+                    </p>
+                    <p>
+                        Players will play as a role of Batman in the game and can move it by manipulating the up, 
+                        down, left and right buttons on the keyboard. The player will pass the level when the player pushes 
+                        all the boxes around the obstacles and onto all the Light colored positions. Also, the box can only be pushed, not pulled.
+                    </p>
+                    <p>
+                        In order to enrich the fun of players, this game not only provides levels, but also has the function of leaderboard. 
+                        This feature records the number of steps a player has taken on each level and all levels, then converts them into scores and 
+                        divides them into one of three levels. Finally publish these data in a leaderboard.
+                        In this leaderboard, you can compare with your friends or other players who needs the fewest moves and enjoy this challenging game.
+                    </p>
+                </div>
+            </div>
+            <button class="withdraw" onclick="{{ url_for('view') }}">View Data</button>
+            <button class="withdraw" onclick="{{ url_for('signout') }}">Sign Out</button>
         </div>
-        
+
         <div class="mask">
             <div class="toast">
                 <h2>Success!</h2>
@@ -178,4 +202,18 @@
             <p>By Zheyuan Deng(22856226), Yongyi Lin(22376411) & ().</p>
         </footer>
     </body>
+    <script>
+        $(function (){
+            $('.change').click(function ()
+            {
+                $('.intro').animate({height:'toggle', opacity:'toggle'}, 'slow');
+            });
+        })
+        function start() {
+            document.getElementById('intro').style.display=""
+        }
+        function close() {
+            document.getElementById('intro').style.display="none"
+        }
+    </script>
 </html>

@@ -6,6 +6,7 @@ class User(db.Model):   #creating a database model
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20))
     password_hash = db.Column(db.String(128))
+    movetimes = db.Column(db.Integer)
 
     def set_password(self, password):   #check the password
         self.password_hash = generate_password_hash(password)

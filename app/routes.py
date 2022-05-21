@@ -16,10 +16,6 @@ def load_user(user_id):
 def home():
     return render_template('home.html')
 
-@app.route('/intro')  #introduction page
-def intro():
-    return render_template('intro.html')
-
 @app.route('/login', methods=['GET', 'POST'])   #login page
 def login():
     form = LoginForm()
@@ -32,7 +28,7 @@ def login():
             if username == player.username and player.validate_password(password):   #compare the submitted data with the data in database
                 login_user(player)
                 flash('Login successfully!')
-                return redirect(url_for('intro'))   #return to login page
+                return redirect(url_for('sokoban'))   #return to login page
             else:
                 flash('Incorrect username or password!')
                 return redirect(url_for('login'))   #return to login page
@@ -52,8 +48,8 @@ def register():
             player = User(username=username, password=password)  #Creating a new player
             db.session.add(player)
             db.session.commit()
-            return render_template('login.html', title='Log in', form=form)
             flash('New player is created.')
+            return render_template('login.html', title='Log in', form=form)
         else:
             flash('Invalid Input!')
     return render_template('register.html', title='Register', form=form)
@@ -64,6 +60,12 @@ def logout():
     flash('Goodbye.')
     return redirect(url_for('login'))   #return to signin page
 
-@app.route('/sokoban')   #game page
+@app.route('/sokoban', methods=['GET', 'POST'])   #game page
 def sokoban():
-    return redirect(url_for('sokoban'))
+ #   player.scores = player.scores + int(scores)
+    return render_template('sokoban.html')
+
+@app.route('/view', methods=['GET', 'POST'])   #view data page
+def view():
+    players = User.query.all()  # Reading user records
+    return render_template('view.html', players=players)

@@ -4,15 +4,55 @@ h1 {
     background: linear-gradient(to right, red, pink, orange, yellow);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
+}
     
 body {
     background-image: url("../img/backgrounds.jpg");
     background-size: cover;
     height: 100%;
-  }
+}
 
 footer {
     color:#fff;
     text-align: right;
 }
+
+.float-right {
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    background: #923667;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
+#close {
+    cursor: pointer;
+    float: right;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.content {
+    position: relative;
+    margin-top: 80px;
+}
+
+.intro{
+    font-family: "Gill Sans", sans-serif;
+    position: fixed;
+    background-color: white;
+    top: 20%;
+    left: 30%;
+    width: 500px;
+    height: 400px;
+    border-radius: 1em;
+    text-align: center;
+}
+
