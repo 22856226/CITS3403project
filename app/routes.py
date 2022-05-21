@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for, redirect, flash
+from flask import render_template, request, url_for, redirect, flash, session
 from app import app, db
 from app.forms import LoginForm, RegisterForm
 from app.models import User
@@ -21,42 +21,42 @@ def login():
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():   #determine whether the form was submitted and validate the form data
-            username = request.form.get('username')
-            password = request.form.get('password')
+            session['username'] = request.form.get('username')
+            session['password'] = request.form.get('password')
             remember_me = request.form.get('remember_me', False)
             player = User.query.first()
-            if username == player.username and player.validate_password(password):   #compare the submitted data with the data in database
+            if session['username'] == player.username and player.validate_password(session['password']):   #compare the submitted data with the data in database
                 login_user(player)
-                flash('Login successfully!')
+                flash('Login successfully!', 'message')
                 return render_template('sobokan.html', title='Log in', player=player)   #go to game page
             else:
-                flash('Incorrect username or password!')
+                flash('Incorrect username or password!', 'error')
                 return redirect(url_for('login'))   #return to login page
         else:
-            flash('Invalid Input!')
+            flash('Invalid Input!', 'error')
     return render_template('login.html', title='Log in', form=form)
 
 @app.route('/register', methods=['POST'])  #register page
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        username = request.form.get('username')
-        password = request.form.get('password')
-        if not username or not password:   #determines whether the user has entered data
+        session['username'] = request.form.get('username')
+        session['password'] = request.form.get('password')
+        if not session['username'] or not session['password']:   #determines whether the user has entered data
             flash('Invalid input!')
-        player = User(username=username, password=password)  #Creating a new player
+        player = User(username=session['username'], password=session['password'])  #Creating a new player
         db.session.add(player)
         db.session.commit()
-        flash('New player is created.')
+        flash('New player is created.', 'message')
         return render_template('login.html', title='Log in', form=form)
     else:
-        flash('Invalid Input!')
+        flash('Invalid Input!', 'error')
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/signout')   #sign out page
 def logout():
     logout_user()
-    flash('You were logged out. Goodbye!')
+    flash('You were logged out. Goodbye!', 'message')
     return redirect(url_for('login'))   #return to signin page
 
 @app.route('/sokoban', methods=['GET', 'POST'])   #game page
