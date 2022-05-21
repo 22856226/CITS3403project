@@ -29,14 +29,6 @@ class TestCase(unittest.TestCase):
         self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
         self.app = app.test_client()
         app.init_db()
-
-    def tearDown(self):   #Close the file and delete it from the file system
-        os.close(self.db_fd)
-        os.unlink(app.DATABASE)
-
-    def test_empty_db(self):
-        rv = self.app.get('/')
-        assert 'No entries here so far' in rv.data
     
     # Test login, logout and register
     def login(self, username, password):
@@ -64,6 +56,14 @@ class TestCase(unittest.TestCase):
         assert 'No entries here so far' not in rv.data
         assert 'admin' in rv.data
         assert '88888888' in rv.data
+    
+    def tearDown(self):   #Close the file and delete it from the file system
+        os.close(self.db_fd)
+        os.unlink(app.DATABASE)
+    
+    def test_empty_db(self):
+        rv = self.app.get('/')
+        assert 'No entries here so far' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
