@@ -1,156 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Sokoban Games</title>
-    <link rel="stylesheet" href="css/push.css">
-</head>
-<body>
-    <h1> Hello {{ form.username }}, welcome to the Sokoban games.</h1>
-    <ul class ="choice">
-        <li><button id="level1"class="btn btn-primary btn-lg">level1</button></li>
-        <li><button id ="level2" class="btn btn-primary btn-lg"> level2</button></li>
-        <li><button id="level3" class="btn btn-primary btn-lg"> level3</button></li>
-    </ul>
-    <div class="box">
-        <!-- line 1 -->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div> 
-
-        <!-- line 2  -->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div> 
-        <!-- line 3 -->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div> 
-        <!-- line 4-->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div> 
-        <!-- line 5 -->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div> 
-        <!-- line 6 -->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div> 
-        <!-- line 7 -->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div> 
-        
-        <!-- line 8 -->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>         
-        <!-- line 9 -->
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>                   
-    </div>
-    <div>
-        <ul id="choice2">
-            <li><button onclick="backup(steps.pop())()">Backup</button></li>
-            <li><button onclick="{{ url_for('view') }}">View Data</button></li>
-            <li><button onclick="{{ url_for('signout') }}">Sign Out</button></li>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Sokoban Games</title>
+        <link rel="stylesheet" href="css/push.css">
+    </head>
+    <body>
+        <h1> Hello everyone, welcome to the Sokoban games.</h1>
+        <ul class="choice">
+            <li>
+                <button data-index="1" id="level1" class="btn btn-primary btn-lg">level1</button>
+            </li>
+            <li>
+                <button data-index="2" id="level2" class="btn btn-primary btn-lg"> level2</button>
+            </li>
+            <li>
+                <button data-index="3" id="level3" class="btn btn-primary btn-lg"> level3</button>
+            </li>
         </ul>
-    </div>
-    <h3 id='movetimes'>The number of times you moved was 0</h3>
-    <script src="static/jquery-3.1.1.min.js"></script>
-    <script src="src/index.js"></script>
+        <div class="box">
+            <!-- line 1 -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <!-- line 2  -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <!-- line 3 -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <!-- line 4-->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <!-- line 5 -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <!-- line 6 -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <!-- line 7 -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <!-- line 8 -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <!-- line 9 -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h3 id='movetimes'>The number of times you moved was 0</h3>
+        <div class="back">
+            <button id="withdraw" onclick="backup(steps.pop())()">Backup</button>
+            <button id="withdraw" onclick="{{ url_for('view') }}">View Data</button>
+            <button id="withdraw" onclick="{{ url_for('signout') }}">Sign Out</button>
+        </div>
+        
+        <div class="mask">
+            <div class="toast">
+                <h2>Success!</h2>
+                <div class="step">
+                    <span>steps: </span>
+                    <span class="step-text">132</span>
+                </div>
+                <div class="score">
+                    <span>scores: </span>
+                    <span class="score-text">88</span>
+                </div>
+                <div class="button">
+                    <div class="reload">
+                        play again
+                    </div>
+                    <div class="next">
+                        next 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="static/jquery-3.1.1.min.js"></script>
+        <script src="src/index.js"></script>
 
-    <footer>
-        <p>The creators: Zheyuan Deng(), Yongyi Lin(22376411) & ().</p>
-    </footer>
-</body>
+        <footer>
+            <p>By Zheyuan Deng(22856226), Yongyi Lin(22376411) & ().</p>
+        </footer>
+    </body>
 </html>
