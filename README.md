@@ -23,7 +23,8 @@ As shown in the picture below.
     * [Movements](#movements)
     * [Score Scale](#score-scale)
 * [Update and Vet Levels](#update-and-vet-levels)
-* [Acceptance testing](#acceptance-testing)
+* [Testings](#testing)
+* [Deploying to Heroku](#deploying-to-heroku)
 * * *
 
 ## Requirements
@@ -37,6 +38,7 @@ As shown in the picture below.
 - `wtforms`, `wtforms.validators`
 - `os`
 - `sys`
+- `tempfile`
 
 ## Launch From Local Host
 ### Gain Project file
@@ -139,3 +141,5 @@ $("#levelx").click(function(){
 
 ## Acceptance testing
 
+
+## Deploying to Heroku
