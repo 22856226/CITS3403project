@@ -26,6 +26,7 @@ As shown in the picture below.
 * [Testings](#testing)
     * [Log in, Register and Log Out](#log-in-register-and-log-out)
     * [Test Coverage](#test-coverage)
+    * [Gaming Experience and Web Page Buttons](#gaming-experience)
 * [Deploying to Heroku](#deploying-to-heroku)
     * [Prerequisites](#prerequisites)
 * * *
@@ -174,7 +175,7 @@ To execute the tests, simply execute `teste.py` in the CITS3403 file.
 $ pipenv install coverage --dev
 $ coverage run --source=app tests.py
 ```
-### Web Page Buttons
+### Gaming Experience and Web Page Buttons
 - This was tested through user experience in the web page that launched primarily from the [local host](#getting-started).
 
 ## Deploying to Heroku
