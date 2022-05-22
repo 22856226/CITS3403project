@@ -24,6 +24,9 @@ As shown in the picture below.
     * [Score Scale](#score-scale)
 * [Update and Vet Levels](#update-and-vet-levels)
 * [Testings](#testing)
+    * [Log in, Register and Log Out](#log-in-register-and-log-out)
+    * [Test Coverage](#test-coverage)
+    * [Gaming Experience and Web Page Buttons](#gaming-experience)
 * [Deploying to Heroku](#deploying-to-heroku)
     * [Prerequisites](#prerequisites)
 * * *
@@ -159,7 +162,21 @@ $("#levelx").click(function(){
 5. Finally, save the `index.js` and re-execute all commands, and you can see the changes on the Web page.
 
 ## Acceptance testing
-
+To execute the tests, simply execute `teste.py` in the CITS3403 file.
+### Log in, Register and Log Out
+1. Test used correct username and password to login for `login()`.
+2. Test whether player can log out for `logout()`.
+3. Test used incorrect username but correct password to login for `login()`.
+4. Test used correct username but incorrect password to login for `login()`.
+5. Test whether player can register for `register()`.
+### Test Coverage
+1. Use `Coverage.py` to test the coverage of project. Firstly, use following command to install it and then run `tests.py`:
+```
+$ pipenv install coverage --dev
+$ coverage run --source=app tests.py
+```
+### Gaming Experience and Web Page Buttons
+- This was tested through user experience in the web page that launched primarily from the [local host](#getting-started).
 
 ## Deploying to Heroku
 ### Prerequisites
