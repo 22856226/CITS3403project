@@ -33,28 +33,30 @@ class GameTestCase(unittest.TestCase):
             ), follow_redirects=True)
     def logout(self):
         return self.app.get('/signout', follow_redirects=True)
-    def register(self):
-        return self.app.get('/register', follow_redirects=True)
+    def register(self, username, password_hash):
+        return self.app.post('/register', data=dict(
+            username=username,
+            password=password_hash
+            ),follow_redirects=True)
 
     def test_login_logout(self):
         rv = self.login('Tester', '123456789')   #enter username and password correctly
-        assert 'You were logged in' in rv.data
+        assert 'Login successfully!' in rv.data
         rv = self.logout()   # test logout
-        assert 'You were logged out' in rv.data
+        assert 'You were logged out. Goodbye!' in rv.data
         rv = self.login('wrong', '123456789')   #enter incorrect username but correct password
-        assert 'Invalid username' in rv.data
+        assert 'Incorrect username or password!' in rv.data
         rv = self.login('Tester', '1234567')   #enter correct username but incorrect password
-        assert 'Invalid password' in rv.data
+        assert 'Incorrect username or password!' in rv.data
 
-    def test_register(self):   # test register
-        self.register('admin', '88888888')
-        rv = self.app.post('/add', data=dict(
-        username='admin',
-        password_hash='88888888'
-        ), follow_redirects=True)
-        assert 'No entries here so far' not in rv.data
-        assert 'admin' in rv.data
-        assert '88888888' in rv.data
+    def test_register(self):
+        rv = self.register(username='Tester2', password_hash='88888888')   # test register a account
+        assert 'Invalid input!' not in rv.data
+        assert 'New player is created.' in rv.data
+        rv = self.register(username='', password_hash='88888888')   # test blank input of username or password
+        assert 'Invalid input!' in rv.data
+        rv = self.register(username='Tester2', password_hash='')
+        assert 'Invalid input!' in rv.data
     
     def tearDown(self):   #Close the file and delete it from the file system
         db.session.remove()

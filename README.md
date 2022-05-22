@@ -166,9 +166,9 @@ To execute the tests, simply execute `teste.py` in the CITS3403 file.
 ### Log in, Register and Log Out
 1. Test used correct username and password to login for `login()`.
 2. Test whether player can log out for `logout()`.
-3. Test used incorrect username but correct password to login for `login()`.
-4. Test used correct username but incorrect password to login for `login()`.
-5. Test whether player can register for `register()`.
+3. Test used incorrect username but correct password (or correct username but incorrect password) to login for `login()`.
+4. Test whether player can register a account for `register()`.
+5. Test used blank input of username or password for `register()`.
 ### Test Coverage
 1. Use `Coverage.py` to test the coverage of project. Firstly, use following command to install it and then run `tests.py`:
 ```
