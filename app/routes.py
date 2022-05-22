@@ -2,7 +2,7 @@ from flask import render_template, request, url_for, redirect, flash, session
 from app import app, db
 from app.forms import LoginForm, RegisterForm
 from app.models import User
-from flask_login import LoginManager, login_user, login_required, logout_user
+from flask_login import LoginManager, login_user, logout_user
 
 '''When the program runs, if the user is logged in, 
 the value of the login_manager variable will be the user model class record for the current user'''
@@ -36,7 +36,7 @@ def login():
             flash('Invalid Input!', 'error')
     return render_template('login.html', title='Log in', form=form)
 
-@app.route('/register', methods=['POST'])  #register page
+@app.route('/register', methods=['Get','POST'])  #register page
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
