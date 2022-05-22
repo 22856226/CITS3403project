@@ -72,7 +72,7 @@ $ deactivate
 ```
 4. Run the following command to install Flask in this environment:
 ```
-pip install Flask
+$ pip install Flask
 ```
 5. Use the following command to install third-party packages required by the project：
 ```
