@@ -1,15 +1,17 @@
 from flask import render_template, request, url_for, redirect, flash, session
 from app import app, db
 from app.forms import LoginForm, RegisterForm
-from app.models import User
+from app.models import User, current
 from flask_login import LoginManager, login_user, logout_user
+# from app.index import win
 
 '''When the program runs, if the user is logged in, 
 the value of the login_manager variable will be the user model class record for the current user'''
 login_manager = LoginManager(app)
 @login_manager.user_loader
-def load_user(user_id):
-    player = User.query.get(int(user_id))
+def load_user(curr_player):
+    if current(curr_player) is not None:
+        player = User.query.get(int(curr_player))
     return player
 
 @app.route('/')  #home page
@@ -22,6 +24,7 @@ def login():
     if request.method == 'POST':
         if form.validate_on_submit():   #determine whether the form was submitted and validate the form data
             session['username'] = request.form.get('username')
+            session.permanent = True
             session['password'] = request.form.get('password')
             remember_me = request.form.get('remember_me', False)
             player = User.query.first()
@@ -44,7 +47,7 @@ def register():
         session['password'] = request.form.get('password')
         if not session['username'] or not session['password']:   #determines whether the user has entered data
             flash('Invalid input!')
-        player = User(username=session['username'], password=session['password'])  #Creating a new player
+        player = User(username=session['username'], password=session['password'], scores=0)  #Creating a new player
         db.session.add(player)
         db.session.commit()
         flash('New player is created.', 'message')
@@ -61,10 +64,15 @@ def logout():
 
 @app.route('/sokoban', methods=['GET', 'POST'])   #game page
 def sokoban():
- #   player.scores = player.scores + int(scores)
+    player = session.get('username')
+#    player.scores = player.scores + int(scores)
+    db.session.commit()
     return render_template('sokoban.html', title='Game')
 
 @app.route('/view', methods=['GET', 'POST'])   #view data page
 def view():
-    players = User.query.all()  # Reading user records
-    return render_template('view.html', players=players)
+    player = session.get('username')  # Reading user records
+    if not player:
+        flash('Only logged-in accounts can view data.', 'warning')
+        return redirect(url_for('sobokan'))
+    return render_template('view.html', player=player)

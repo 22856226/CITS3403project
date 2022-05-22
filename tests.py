@@ -1,18 +1,25 @@
 import unittest
 from app import app, db
 from app.models import User
-''''
-user = User(username='Tester', password_hash='123456789', movetimes='100')
+from flask import session
+'''
+user = User(username='Tester', password_hash='123456789', scores='100')
 db.session.add(user)
 db.session.commit()
 
-user2 = User(username='Tester2', password_hash='987654321', movetimes='60')
+
+user2 = User(username='Tester2', password_hash='987654321', scores='60')
 db.session.add(user2)
 db.session.commit()
-user = User.query.get(1)
-user.movetimes = user.movetimes + int(50)
+
+player = User.query.filter_by(username=session('Tester')).first()
 db.session.commit()
-print(user.movetimes)
+print(player.scores)
+
+user.scores = user.scores + int(50)
+db.session.commit()
+
+print(user.scores)
 '''
 
 class GameTestCase(unittest.TestCase):
@@ -63,3 +70,4 @@ class GameTestCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
