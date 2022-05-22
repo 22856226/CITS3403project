@@ -18,4 +18,3 @@ with app.test_request_context():   #keep the database accessible at all times
 
 from app import routes, models
 
-db.create_all()   # Creating a database
