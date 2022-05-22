@@ -1,69 +1,63 @@
+* {
+  font-family: "Gill Sans", sans-serif
+}
 h1 {
   text-align: center;
+  font-style: italic;
   background: linear-gradient(to right, red, pink, orange, yellow);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-  
 body {
   background-image: url("/static/img/backgrounds.jpg");
   background-size: cover;
   height: 100%;
 }
-  
 .box {
   overflow: hidden;
   margin: 15vh auto 0;
   height: 480px;
   width: 480px;
 }
-  
 .box div {
   float: left;
   width: 40px;
   height: 40px;
 }
-  
 .type1 {
   /*the place need to reach*/
   opacity: .5;
 }
-  
 .type1, .type2 {
   background-image: url("/static/img/ground.jpg");
 }
-  
 .type3 {
   /*wall*/
   background-image: url("/static/img/wall.jpg");
 }
-  
 .type4 {
   /*box*/
   box-sizing: border-box;
   border: 1px solid;
   background-image: url("/static/img/box.jpg");
 }
-  
 .pusher {
   /* batman*/
   width: 40px;
   height: 40px;
   background-image: url("/static/img/batman.jpg");
   background-size: cover;
-}
-  
+} 
 h3 {
   background: linear-gradient(to right, red, orange, yellow, green, blue);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-style: italic;
   text-align: center;
 }
-  
 .back {
   text-align: center;
 }
-  
 .withdraw {
   margin-top: 30px;
   background-color: white;
@@ -73,16 +67,14 @@ h3 {
   padding: 5px 10px;
   box-shadow: 0 4px #999;
 }
-  
 .withdraw:hover {
   background-color: #00FFFF;
   color: red;
 }
-  
 .withdraw:active {
   transform: translateY(4px);
 }
-#intro{
+#intro {
   display: none;
   position: absolute;
   left: 50%;
@@ -94,7 +86,6 @@ h3 {
   border-radius: 10px;
   background: #f5f5f5;
 }
-
 span {
   color: white;
   padding-top: 12px;
@@ -109,8 +100,6 @@ span {
   font-size: 30px;
   color: #333;
 }
-
-  
 .choice {
   position: relative;
   top: 80px;
@@ -119,13 +108,11 @@ span {
   margin: 0;
   padding: 0;
 }
-  
 .choice li {
   display: inline-block;
   font-size: 20px;
   padding: 20px;
 }
-  
 .mask {
   display: none;
   position: absolute;
@@ -135,8 +122,7 @@ span {
   left: 0;
   background: rgba(0, 0, 0, .4);
   color: #fff;
-}
-  
+}  
 .toast {
   position: absolute;
   top: 50%;
@@ -147,33 +133,23 @@ span {
   border-radius: 15px;
   background: #2b669a;
   user-select: none;
-}
-  
+} 
 .toast h2 {
   margin: 0;
   font-size: 40px;
-}
-  
+} 
 .toast .step {
   margin: 18px 0 12px;
-}
-  
+}  
 .toast .button {
   display: flex;
   justify-content: space-between;
   margin-top: 12px;
-}
-  
+} 
 .toast .button > div {
   padding-bottom: 3px;
   cursor: pointer;
 }
-  
 .toast .button > div:hover {
   text-decoration: #fff underline;
-}
-
-footer {
-  color:#fff;
-  text-align: right;
 }

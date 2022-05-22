@@ -2,16 +2,16 @@
 <html>
     <head>
       {% if title %}
-      <title>{{ title }} - Microblog</title>
+      <title>{{ title }} - Sobokan</title>
       {% else %}
-      <title>Welcome to Microblog</title>
+      <title>Welcome to Sokoban Games</title>
       {% endif %}
       <link rel="stylesheet" href="{{ url_for('static', filename='render2.css')}}">
     </head>
     <body>
         <div>
-            Microblog:
-            <a href="{{ url_for('index') }}">homes</a>
+            Sokoban Game: 
+            <a href="{{ url_for('index') }}">Home</a>
             {% if current_user.is_anonymous %}
             <a href="{{ url_for('login') }}">Login</a>
             {% else %}
@@ -19,7 +19,7 @@
             {% endif %}
         </div>
         <hr>
-        <p>If you want to record your grades : </p>
+        <p>If you want to record your grades: </p>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>
@@ -30,5 +30,9 @@
         {% endif %}
         {% endwith %}
         {% block content %}{% endblock %}
+
+        <footer>
+            <p>By Zheyuan Deng(22856226), Yongyi Lin(22376411) & ().</p>
+        </footer>
     </body>
 </html>

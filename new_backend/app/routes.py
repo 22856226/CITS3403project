@@ -1,25 +1,20 @@
-from flask import render_template, flash, redirect
-from flask import Flask, url_for
-from flask import request
+from flask import render_template, flash, redirect, request, Flask, url_for
 from app import app, db
-from app.forms import LoginForm
-from flask_login import current_user, login_user
+from app.forms import LoginForm, RegistrationForm
+from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
-from flask_login import logout_user
-from flask_login import login_required
 from werkzeug.urls import url_parse
-from app.forms import RegistrationForm
 
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
     return render_template('sokoban.html')
-@app.route('/play')
+@app.route('/play')   #game page
 def play():
     return render_template('sokoban.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])   #login page
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -35,11 +30,13 @@ def login():
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
-@app.route('/logout')
+
+@app.route('/logout')   #logout page
 def logout():
     logout_user()
     return redirect(url_for('index'))
-@app.route('/register', methods=['GET', 'POST'])
+
+@app.route('/register', methods=['GET', 'POST'])   #register page
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -49,6 +46,6 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
+        flash('Congratulations, you are now a registered player!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
