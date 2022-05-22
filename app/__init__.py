@@ -12,3 +12,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////' + os.path.join(app.root_pa
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #creat a database
 db = SQLAlchemy(app)
+

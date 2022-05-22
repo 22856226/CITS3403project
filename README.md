@@ -24,9 +24,6 @@ As shown in the picture below.
     * [Score Scale](#score-scale)
 * [Update and Vet Levels](#update-and-vet-levels)
 * [Testings](#testing)
-    * [Log in, Register and Log Out](#log-in-register-and-log-out)
-    * [Test Coverage](#test-coverage)
-    * [Gaming Experience and Web Page Buttons](#gaming-experience)
 * [Deploying to Heroku](#deploying-to-heroku)
     * [Prerequisites](#prerequisites)
 * * *
