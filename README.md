@@ -48,19 +48,37 @@ or
 - Obtain the CITS3403project file package by other ways.
 ### Steps
 1. Find the route to the CITS3403 file and enter it on the local host.
-2. If the terminal environment is `(base)`, run the following command to go to the virtual environment `(venv)`:
+2. Run the following command to bulid a virtual Python environment -- ***__virtualEnv__***:
+- For Linux / OS X:
+```
+$ sudo apt-get install virtualenv
+```
+For Windows:
+```
+$ pip install virtualenv
+```
+3. If the terminal environment is `(base)`, run the following command to activate the virtual environment `(venv)`:
+- For Linux / OS X:
 ```
 $ source venv/bin/activate
+```
+- For Windows:
+```
+$ source venv\scripts\activate
 ```
 - Also, you can exit virtual environment using the following command:
 ```
 $ deactivate
 ```
-3. Use the following command to install third-party packages required by the project：
+4. Run the following command to install Flask in this environment:
+```
+pip install Flask
+```
+5. Use the following command to install third-party packages required by the project：
 ```
 $ pip install -Ur requirements.txt
 ```
-4. Use the following command and visit 'http://127.0.0.1:5000':
+6. Use the following command and visit 'http://127.0.0.1:5000':
 ```
 $ export Flask_APP=microblog.py
 $ flask fun
