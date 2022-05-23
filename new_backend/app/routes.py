@@ -22,9 +22,10 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
+            flash('Invalid username or password!')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
+        flash('Login successfully!')
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
@@ -34,6 +35,7 @@ def login():
 @app.route('/logout')   #logout page
 def logout():
     logout_user()
+    flash('You were logged out. Goodbye!')
     return redirect(url_for('index'))
 
 @app.route('/register', methods=['GET', 'POST'])   #register page
