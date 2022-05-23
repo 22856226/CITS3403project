@@ -24,6 +24,9 @@ As shown in the picture below.
     * [Score Scale](#score-scale)
 * [Update and Vet Levels](#update-and-vet-levels)
 * [Testings](#testing)
+    * [Log in, Register and Log Out](#score-scale)
+    * [Test Coverage](#score-scale)
+    * [Gaming Experience and Web Page Buttons](#experience)
 * * *
 
 ## Requirements
@@ -31,13 +34,7 @@ As shown in the picture below.
 - HTML5, CSS3 and JavaScript
 - Python
 ### Required Packages
-- `unittest`
-- `flask`, `flask_wtf`, `flask_sqlalchemy`, `flask_login`
-- `werkzeug.security`
-- `wtforms`, `wtforms.validators`
-- `os`
-- `sys`
-- `tempfile`
+`alembic`==1.7.7, `click`==8.1.3, `dnspytho`n==2.2.1, `email-validator`==1.2.1, `Flask`==2.1.2, `Flask-Login`==0.6.1, `Flask-Migrate`==3.1.0, `Flask-SQLAlchemy`==2.5.1, `Flask-WTF`==1.0.1, `greenlet`==1.1.2, `idna`==3.3, `importlib-metadata`==4.11.4, `itsdangerous`==2.1.2, `Jinja2`==3.1.2, `Mako`==1.2.0, `MarkupSafe`==2.1.1, `python-dotenv`==0.20.0, `SQLAlchemy`==1.4.36, `Werkzeug`==2.1.2, `WTForms`==3.0.1, `zipp`==3.8.0
 
 ## Launch From Local Host
 ### Gain Project file
@@ -156,7 +153,7 @@ $("#levelx").click(function(){
 4. Then, create a new scoring rule for the new level, as detailed in the [Score Scale](#score-scale) section.
 5. Finally, save the `index.js` and re-execute all commands, and you can see the changes on the Web page.
 
-## Acceptance testing
+## Testings
 To execute the tests, simply execute `teste.py` in the CITS3403 file.
 ### Log in, Register and Log Out
 1. Test used correct username and password to login for `login()`.
