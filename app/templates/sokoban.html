@@ -197,24 +197,9 @@
                 </div>
             </div>
         </div>
-        <script type = "text/javascript" src = "{{ url_for('static', filename = 'index.js') }}" 
-        </script>
+        <script type = "text/javascript" src = "{{ url_for('static', filename = 'index.js') }}"></script>
         <footer>
-            <p>By Zheyuan Deng(22856226), Yongyi Lin(22376411) .</p>
+            <p>By Zheyuan Deng(22856226), Yongyi Lin(22376411).</p>
         </footer>
-    </body>
-    <script>
-        $(function (){
-            $('.change').click(function ()
-            {
-                $('.intro').animate({height:'toggle', opacity:'toggle'}, 'slow');
-            });
-        })
-        function start() {
-            document.getElementById('intro').style.display=""
-        }
-        function close() {
-            document.getElementById('intro').style.display="none"
-        }
-    </script>
+        </body>
 </html>

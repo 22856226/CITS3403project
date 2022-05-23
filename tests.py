@@ -24,46 +24,110 @@ class GameTestCase(unittest.TestCase):
         )
         db.create_all()
         self.client = app.test_client()
+        self.runner = app.test_cli_runner()
 
     # Test login, logout and register
     def login(self, username, password):
-        return self.app.post('/login', data=dict(
+        return app.post('/login', data=dict(
             username=username,
             password=password
             ), follow_redirects=True)
     def logout(self):
-        return self.app.get('/signout', follow_redirects=True)
+        return app.get('/signout', follow_redirects=True)
     def register(self, username, email, password, password2):
-        return self.app.post('/register', data=dict(
+        return app.post('/register', data=dict(
             username=username,
             email=email,
             password=password,
             password2=password2
             ),follow_redirects=True)
+    
+    def test_login(self):
+        response = self.client.post('/login', data=dict(   #enter correct username and password
+            username='Tester',
+            password='123456789'
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Login successfully!', data)
 
-    def test_login_logout(self):
-        rv = self.login('Tester', '123456789')   #enter username and password correctly
-        assert 'Login successfully!' in rv.data
-        rv = self.logout()   # test logout
-        assert 'You were logged out. Goodbye!' in rv.data
-        rv = self.login('wrong', '123456789')   #enter incorrect username but correct password
-        assert 'Incorrect username or password!' in rv.data
-        rv = self.login('Tester', '1234567')   #enter correct username but incorrect password
-        assert 'Incorrect username or password!' in rv.data
+        response = self.client.post('/login', data=dict(   #enter correct username but incorrect password
+            username='Tester',
+            password='123'
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Login successfully!', data)
+
+        response = self.client.post('/login', data=dict(   #enter incorrect username but correct password
+            username='Tester2',
+            password='123456789'
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Login successfully!', data)
+
+        response = self.client.post('/login', data=dict(   #enter incorrect username and password
+            username='Tester2',
+            password='123'
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Login successfully!', data)
+
+        response = self.client.post('/login', data=dict(   #test blank input of username
+            username='',
+            password='123456789'
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Login successfully!', data)
+
+        response = self.client.post('/login', data=dict(   #test blank input of password
+            username='Tester',
+            password=''
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Login successfully!', data)
+    
+    def test_logout(self):   #test logout
+        self.login('Tester', '123456789')
+        response = self.client.get('/logout', follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Goodbye.', data)
 
     def test_register(self):
-        rv = self.register(username='Tester2', password='88888888')   # test register a account
-        assert 'Invalid input!' not in rv.data
-        assert 'Congratulations, you are now a registered player!' in rv.data
-        rv = self.register(username='', password='88888888')   # test blank input of username or password
-        assert 'Invalid input!' in rv.data
-        rv = self.register(username='Tester2', password='')
-        assert 'Invalid input!' in rv.data
-    
+        response = self.client.post('/register', data=dict(   #test when enter incorrect confirm password 
+            username='admin',
+            email='admin@gmail.com',
+            password='987654321',
+            password2=''
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Congratulations, you are now a registered user!', data)
+
+        response = self.client.post('/register', data=dict(   #test when enter incorrect email 
+            username='admin',
+            email='',
+            password='987654321',
+            password2='987654321'
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Congratulations, you are now a registered user!', data)
+
+        response = self.client.post('/register', data=dict(   #test when enter correct format
+            username='admin',
+            email='admin@gmail.com',
+            password='987654321',
+            password2='987654321'
+        ), follow_redirects=True)
+        data = response.get_data(as_text=True)
+        self.assertNotIn('Congratulations, you are now a registered user!', data)
+
     def tearDown(self):   #Close the file and delete it from the file system
         db.session.remove()
         db.drop_all()
+    
+    def test_app_exist(self):
+        self.assertIsNotNone(app)
+    
+    def test_app_is_testing(self):
+        self.assertTrue(app.config['TESTING'])
 
 if __name__ == '__main__':
     unittest.main()
-
