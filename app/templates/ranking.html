@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+          <link rel="stylesheet" href="{{ url_for('static', filename='render2.css')}}">
+
+    <title> Information </title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Player information</h3>
+                    </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <td> User name</td>
+                                <td> Level 1</td>
+                                <td> Level 2</td>
+                                <td> Level 3</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in content %}
+                                <tr>
+                                    <td>{{ i.user_name}}</td>
+                                    <td>{{ i.level1 }}</td> 
+                                    <td>{{ i.level2 }}</td> 
+                                    <td>{{ i.level3 }}</td> 
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        Link:
+        <a href="{{ url_for('index') }}">homes  </a>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Login </a>
+        {% else %}
+        <a href="{{ url_for('logout') }}">Logout </a>
+        {% endif %}
+    </div>
+    <p>   <!--come from https://publish.twitter.com/#-->
+        <a href="https://twitter.com/intent/tweet?button_hashtag=PushBox&ref_src=twsrc%5Etfw" 
+        class="twitter-hashtag-button" data-show-count="false">Tweet #PushBoxr</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </p>
+    <p>   <!--come from https://developers.facebook.com/docs/plugins/page-plugin-->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0" nonce="MenraB4e"></script>
+        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" 
+            class="fb-xfbml-parse-ignore">Facebook</a></div>
+    </p>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+        <br>
+        <footer>
+            <p>By Zheyuan Deng(22856226) & Yongyi Lin(22376411).</p>
+        </footer>
+</body>
+</html>
